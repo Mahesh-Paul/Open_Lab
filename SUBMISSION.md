@@ -197,9 +197,10 @@ OK (All tests passed)
 # DELIVERABLE 5: Working Output
 
 ### 1. Deployed Link & Local Preview
-- **Live Production URL:** [https://bespoke-torte-abb32e.netlify.app](https://bespoke-torte-abb32e.netlify.app)
+- **Live Production URL (Render):** [https://open-lab.onrender.com](https://open-lab.onrender.com)
+- **GitHub Repository:** [https://github.com/Mahesh-Paul/Open_Lab](https://github.com/Mahesh-Paul/Open_Lab)
 - **Local Interactive Preview:** Open [`index.html`](file:///c:/Users/mp672/OneDrive/Desktop/Openlab/index.html) in any browser, or run `npx serve .`.
-- **Hosting Infrastructure:** Deployed on Netlify Edge CDN with zero-dependency static delivery.
+- **Hosting Infrastructure:** Deployed as a zero-dependency static site on Render Edge CDN.
 
 ### 2. Code Zip Archive
 - Complete source repository packaged into:  
