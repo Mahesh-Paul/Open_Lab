@@ -1,0 +1,26 @@
+{
+  "name": "onelab-payments-reconciliation",
+  "version": "1.0.0",
+  "description": "Payments Financial Reconciliation Engine & Month-End Anomaly Resolver for Onelab AI Native Engineer Assessment",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve .",
+    "generate-data": "python data_generator.py",
+    "reconcile": "python recon_engine.py",
+    "test": "python -m unittest test_recon.py -v",
+    "export-json": "python export_recon_json.py",
+    "package": "powershell -Command \"Compress-Archive -Path data_generator.py, recon_engine.py, test_recon.py, export_recon_json.py, index.html, package.json, vercel.json, platform_transactions.csv, bank_settlements.csv, recon_data.json, README.md, SUBMISSION.md -DestinationPath onelab_payments_reconciliation.zip -Force\""
+  },
+  "keywords": [
+    "fintech",
+    "reconciliation",
+    "ledger",
+    "payments",
+    "accounting",
+    "anomaly-detection"
+  ],
+  "author": "Google Submitter (Top 0.1% Candidate)",
+  "license": "MIT"
+}
+

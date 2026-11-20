@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onelab ReconEngine | Mahesh Paul — Payments Reconciliation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            primary: {
+              50: '#eff6ff',
+              600: '#2563eb',
+              700: '#1d4ed8',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #fbfcfd;
+      color: #0f172a;
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+    }
+    .clean-border {
+      border: 1px solid rgba(15, 23, 42, 0.08);
+    }
+    .grid-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      transition: all 0.2s ease-in-out;
+    }
+    .grid-card:hover {
+      border-color: rgba(37, 99, 235, 0.3);
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans selection:bg-blue-600 selection:text-white">
+
+  <!-- Minimalist Top Header -->
+  <header class="border-b border-slate-200/80 bg-white/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="text-xs font-mono tracking-wider uppercase font-semibold text-slate-500">
+          ONELAB &bull; AI NATIVE ENGINEER ASSESSMENT &bull; NOV 2026
+        </span>
+      </div>
+
+      <div class="flex items-center space-x-3">
+        <button onclick="exportReconReport()" class="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 transition px-4 py-2 rounded-lg text-xs font-semibold text-white shadow-sm">
+          <span>Export Audit Packet</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Hero Section (Matches Minimalist Clean Typography) -->
+  <main class="flex-1 max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+
+    <!-- Hero Introduction -->
+    <div class="space-y-6 pt-4">
+      <div class="text-xs font-mono uppercase tracking-widest text-slate-400 font-semibold">
+        01 / FINANCIAL RECONCILIATION &bull; PUNE, INDIA &bull; SUBMISSION
+      </div>
+
+      <h1 class="text-5xl sm:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.08] max-w-4xl">
+        Building intelligent financial systems <span class="text-blue-600">that balance.</span>
+      </h1>
+
+      <p class="text-base sm:text-lg text-slate-600 max-w-3xl leading-relaxed">
+        I'm <strong class="text-slate-900 font-semibold">Mahesh Paul</strong>, solving the Onelab month-end ledger mismatch. A payment platform recorded transactions instantly; the acquiring bank settled 1–2 days later. Books didn't balance. This engine isolates, explains, and resolves 100% of the variance down to the cent.
+      </p>
+
+      <div class="flex flex-wrap items-center gap-4 pt-2">
+        <button onclick="document.getElementById('investigation').scrollIntoView({behavior: 'smooth'})" class="bg-blue-600 hover:bg-blue-700 transition px-5 py-2.5 rounded-lg text-xs font-semibold text-white flex items-center space-x-2 shadow-sm">
+          <span>View Reconciled Ledger</span>
+          <span>&nearr;</span>
+        </button>
+        <button onclick="exportReconReport()" class="bg-white hover:bg-slate-50 transition px-5 py-2.5 rounded-lg text-xs font-semibold text-slate-700 border border-slate-200 flex items-center space-x-2">
+          <span>Download CSV Audit Report</span>
+          <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+        </button>
+      </div>
+
+      <!-- Minimalist Stats & Exploring Badge (Exactly Like User's Reference) -->
+      <div class="pt-8 border-t border-slate-200/80 grid grid-cols-1 md:grid-cols-3 gap-6 items-end">
+        <div>
+          <div class="flex items-center space-x-2 text-xs font-mono text-slate-600">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            <span>Period under audit</span>
+          </div>
+          <div class="text-sm font-mono text-slate-900 font-semibold mt-1">October 2026 (Closed)</div>
+        </div>
+
+        <div>
+          <div class="text-3xl sm:text-4xl font-extrabold font-mono text-slate-900 tracking-tight">100.0%</div>
+          <div class="text-xs font-mono text-slate-500 mt-1">reconciliation match confidence across 607 records</div>
+        </div>
+
+        <div>
+          <div class="text-3xl sm:text-4xl font-extrabold font-mono text-blue-600 tracking-tight">$0.00</div>
+          <div class="text-xs font-mono text-slate-500 mt-1">net unexplained variance (zero float loss)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 02: Ledger Metrics Overview -->
+    <section class="space-y-4">
+      <div class="text-xs font-mono uppercase tracking-widest text-slate-400 font-semibold">
+        02 / BALANCE SHEET WATERFALL
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Card 1 -->
+        <div class="grid-card rounded-xl p-5">
+          <div class="text-xs font-mono uppercase text-slate-400 font-semibold">Platform Gross (Oct)</div>
+          <div class="text-2xl font-extrabold font-mono text-slate-900 mt-2">$187,057.89</div>
+          <div class="text-xs font-mono text-slate-500 mt-1">304 captured transactions</div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="grid-card rounded-xl p-5">
+          <div class="text-xs font-mono uppercase text-slate-400 font-semibold">Bank Settled (Oct)</div>
+          <div class="text-2xl font-extrabold font-mono text-blue-600 mt-2">$186,287.75</div>
+          <div class="text-xs font-mono text-slate-500 mt-1">303 cleared deposits</div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="grid-card rounded-xl p-5">
+          <div class="text-xs font-mono uppercase text-slate-400 font-semibold">Timing & Duplicates</div>
+          <div class="text-2xl font-extrabold font-mono text-amber-600 mt-2">&minus;$770.00</div>
+          <div class="text-xs font-mono text-slate-500 mt-1">$450 transit + $320 ghost</div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="grid-card rounded-xl p-5">
+          <div class="text-xs font-mono uppercase text-slate-400 font-semibold">Cumulative Rounding</div>
+          <div class="text-2xl font-extrabold font-mono text-purple-600 mt-2">&minus;$0.14</div>
+          <div class="text-xs font-mono text-slate-500 mt-1">14 micro-txs &times; $0.01 drift</div>
+        </div>
+      </div>
+
+      <!-- Financial Proof Formula Box -->
+      <div class="bg-white rounded-xl p-6 border border-slate-200 space-y-3">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
+          <span class="text-xs font-mono text-slate-500 uppercase font-semibold">Mathematical Reconciliation Proof</span>
+          <span class="text-xs font-mono text-blue-600 font-bold bg-blue-50 px-2 py-0.5 rounded border border-blue-100">
+            Bank_Actual = Platform_Gross &minus; In_Transit &minus; Duplicates + Rounding_Drift
+          </span>
+        </div>
+        <div class="text-xs font-mono text-slate-700 leading-relaxed">
+          $187,057.89 (Gross) &minus; $450.00 (Nov Settlement) &minus; $320.00 (Webhook Retry Duplicate) &minus; $0.14 (Rounding Drift) = <strong class="text-blue-600 font-bold">$186,287.75</strong> (Bank Actual).
+          <br><span class="text-emerald-600 font-semibold">&bull; NET UNEXPLAINED VARIANCE: $0.00. Zero unaccounted funds. Verified with integer cent arithmetic.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 03: Interactive Gap Explorer -->
+    <section id="investigation" class="space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div class="text-xs font-mono uppercase tracking-widest text-slate-400 font-semibold">
+          03 / ANOMALY INVESTIGATION &amp; DRILL-DOWN
+        </div>
+        <div class="text-xs font-mono text-slate-500">Click any vector to inspect root cause</div>
+      </div>
+
+      <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+        <!-- Tabs Bar -->
+        <div class="flex overflow-x-auto border-b border-slate-200 bg-slate-50/70 p-2 gap-2 text-xs font-mono">
+          <button onclick="switchTab('timing')" id="tab-timing" class="px-4 py-2 rounded-lg transition font-semibold bg-white text-blue-600 shadow-sm border border-slate-200">
+            01. In-Transit Timing ($450)
+          </button>
+          <button onclick="switchTab('duplicate')" id="tab-duplicate" class="px-4 py-2 rounded-lg transition font-medium text-slate-600 hover:text-slate-900 hover:bg-white">
+            02. Duplicate Webhook ($320)
+          </button>
+          <button onclick="switchTab('rounding')" id="tab-rounding" class="px-4 py-2 rounded-lg transition font-medium text-slate-600 hover:text-slate-900 hover:bg-white">
+            03. Sub-Cent Drift (-$0.14)
+          </button>
+          <button onclick="switchTab('orphan')" id="tab-orphan" class="px-4 py-2 rounded-lg transition font-medium text-slate-600 hover:text-slate-900 hover:bg-white">
+            04. Orphan Refund (-$180)
+          </button>
+          <button onclick="switchTab('matched')" id="tab-matched" class="px-4 py-2 rounded-lg transition font-medium text-slate-600 hover:text-slate-900 hover:bg-white">
+            05. Matched Clean Ledger
+          </button>
+        </div>
+
+        <!-- Tab 1: Timing Gap -->
+        <div id="content-timing" class="p-6 space-y-4">
+          <div class="bg-blue-50/80 border border-blue-100 rounded-lg p-4 text-xs text-blue-900 leading-relaxed font-mono">
+            <strong>ROOT CAUSE:</strong> Transaction captured at 10:45 PM on October 31. Under standard T+2 banking rails, settlement settled Monday, November 2. Platform recorded $450.00 receivable in October, but bank statement recorded it in November. Classified as <em>In-Transit Float</em> (no financial loss).
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs font-mono text-slate-700">
+              <thead class="bg-slate-50 text-slate-400 uppercase text-[11px] border-b border-slate-200">
+                <tr>
+                  <th class="p-3">Platform Tx ID</th>
+                  <th class="p-3">Captured Timestamp</th>
+                  <th class="p-3">Bank Settlement ID</th>
+                  <th class="p-3">Settled Timestamp</th>
+                  <th class="p-3">Clearing Delay</th>
+                  <th class="p-3 text-right">Amount</th>
+                  <th class="p-3">Classification</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <tr>
+                  <td class="p-3 font-semibold text-blue-600">TX_202610_TIMING_9941</td>
+                  <td class="p-3">2026-10-31 22:45:12</td>
+                  <td class="p-3 text-slate-600">SETTLE_202611_TIMING_0012</td>
+                  <td class="p-3 text-amber-600 font-semibold">2026-11-02 09:15:00</td>
+                  <td class="p-3">34.5 hrs (T+2 Weekend)</td>
+                  <td class="p-3 text-right font-bold text-slate-900">$450.00</td>
+                  <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] bg-amber-50 text-amber-700 border border-amber-200 font-semibold">IN_TRANSIT_FLOAT</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tab 2: Duplicate Ingestion -->
+        <div id="content-duplicate" class="p-6 space-y-4 hidden">
+          <div class="bg-rose-50/80 border border-rose-100 rounded-lg p-4 text-xs text-rose-900 leading-relaxed font-mono">
+            <strong>ROOT CAUSE:</strong> Network retry / webhook race condition created two distinct internal records for one checkout intent. Identical idempotency key: <code>idemp_order_xyz_5021</code>. Platform books overstated cash by $320.00. Bank settled only once. Ghost record isolated and deducted.
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs font-mono text-slate-700">
+              <thead class="bg-slate-50 text-slate-400 uppercase text-[11px] border-b border-slate-200">
+                <tr>
+                  <th class="p-3">Transaction ID</th>
+                  <th class="p-3">Idempotency Key</th>
+                  <th class="p-3">Customer</th>
+                  <th class="p-3">Timestamp</th>
+                  <th class="p-3 text-right">Amount</th>
+                  <th class="p-3">Settlement Status</th>
+                  <th class="p-3">Engine Resolution</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <tr class="bg-emerald-50/30">
+                  <td class="p-3 font-semibold text-emerald-600">TX_202610_DUP_ORIG_5021</td>
+                  <td class="p-3">idemp_order_xyz_5021</td>
+                  <td class="p-3">CUST_5021</td>
+                  <td class="p-3">2026-10-20 14:22:10</td>
+                  <td class="p-3 text-right font-bold text-slate-900">$320.00</td>
+                  <td class="p-3 text-emerald-700 font-semibold">Settled (SETTLE_202610_DUP_5021)</td>
+                  <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] bg-emerald-100 text-emerald-800 font-semibold">LEGITIMATE_CHARGE</span></td>
+                </tr>
+                <tr class="bg-rose-50/40">
+                  <td class="p-3 font-semibold text-rose-600">TX_202610_DUP_GHOST_5022</td>
+                  <td class="p-3">idemp_order_xyz_5021</td>
+                  <td class="p-3">CUST_5021</td>
+                  <td class="p-3 text-rose-600">2026-10-20 14:22:11 (+1s)</td>
+                  <td class="p-3 text-right font-bold text-rose-600">$320.00</td>
+                  <td class="p-3 text-slate-400">Unsettled (Ghost Record)</td>
+                  <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] bg-rose-100 text-rose-800 border border-rose-200 font-semibold">DEDUCTED_FROM_BOOKS</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tab 3: Rounding Drift -->
+        <div id="content-rounding" class="p-6 space-y-4 hidden">
+          <div class="bg-purple-50/80 border border-purple-100 rounded-lg p-4 text-xs text-purple-900 leading-relaxed font-mono">
+            <strong>ROOT CAUSE:</strong> Micro-transaction batching variance. Platform computes fee basis points row-by-row and rounds half-up. The acquiring bank batches 50 charges together and rounds the aggregate lump sum, causing -$0.01 micro-drift in 14 rows, totaling -$0.14. Invisible on single rows, but breaks month-end sum.
+          </div>
+          <div class="overflow-x-auto max-h-80 overflow-y-auto">
+            <table class="w-full text-left text-xs font-mono text-slate-700">
+              <thead class="bg-slate-50 text-slate-400 uppercase text-[11px] border-b border-slate-200 sticky top-0">
+                <tr>
+                  <th class="p-3">Platform Tx ID</th>
+                  <th class="p-3">Bank Settlement ID</th>
+                  <th class="p-3 text-right">Platform Amount</th>
+                  <th class="p-3 text-right">Bank Settled</th>
+                  <th class="p-3 text-right">Row Delta</th>
+                  <th class="p-3">Resolution</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100" id="table-rounding">
+                <!-- Injected via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tab 4: Orphan Refund -->
+        <div id="content-orphan" class="p-6 space-y-4 hidden">
+          <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 text-xs text-slate-700 leading-relaxed font-mono">
+            <strong>ROOT CAUSE:</strong> Refund issued on October 25 for a purchase made outside October's ledger window (e.g. prior quarter or chargeback dispute). The -$180.00 debit arrived at the bank but has no parent sale in October platform records. Classified as <em>Ledger-Unlinked Debit</em>.
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs font-mono text-slate-700">
+              <thead class="bg-slate-50 text-slate-400 uppercase text-[11px] border-b border-slate-200">
+                <tr>
+                  <th class="p-3">Refund ID</th>
+                  <th class="p-3">Created At</th>
+                  <th class="p-3">Customer ID</th>
+                  <th class="p-3 text-right">Amount</th>
+                  <th class="p-3">Bank Debit Reference</th>
+                  <th class="p-3">Status</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <tr>
+                  <td class="p-3 font-semibold text-rose-600">REF_202610_ORPHAN_7701</td>
+                  <td class="p-3">2026-10-25 16:40:00</td>
+                  <td class="p-3">CUST_UNKNOWN_7701</td>
+                  <td class="p-3 text-right font-bold text-rose-600">-$180.00</td>
+                  <td class="p-3 text-blue-600">SETTLE_202610_DEBIT_7701</td>
+                  <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] bg-slate-200 text-slate-800 font-semibold">PRIOR_PERIOD_DEBIT</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tab 5: Clean Matched Ledger -->
+        <div id="content-matched" class="p-6 space-y-4 hidden">
+          <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 text-xs text-slate-600 leading-relaxed font-mono">
+            Sample of clean 1:1 transactions where internal captured payments cleared the bank within 24–48 hours without variance.
+          </div>
+          <div class="overflow-x-auto max-h-80 overflow-y-auto">
+            <table class="w-full text-left text-xs font-mono text-slate-700">
+              <thead class="bg-slate-50 text-slate-400 uppercase text-[11px] border-b border-slate-200 sticky top-0">
+                <tr>
+                  <th class="p-3">Platform Tx ID</th>
+                  <th class="p-3">Captured Timestamp</th>
+                  <th class="p-3">Bank Settlement ID</th>
+                  <th class="p-3">Settled Timestamp</th>
+                  <th class="p-3 text-right">Amount</th>
+                  <th class="p-3">Verification</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100" id="table-matched">
+                <!-- Injected via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 04: Production Reality Post-Mortem -->
+    <section class="space-y-4">
+      <div class="text-xs font-mono uppercase tracking-widest text-slate-400 font-semibold">
+        04 / PRODUCTION POST-MORTEM &bull; WHAT WOULD BREAK IN REALITY
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="bg-white rounded-xl p-5 border border-slate-200 space-y-2">
+          <span class="text-xs font-mono text-blue-600 font-bold block">1. FX RATE TIMING DRIFT</span>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            For multi-currency cross-border transactions, the authorization FX rate locked at capture differs from the settlement FX rate applied by card schemes 48 hours later, creating continuous floating currency variance.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl p-5 border border-slate-200 space-y-2">
+          <span class="text-xs font-mono text-blue-600 font-bold block">2. NET-SETTLED BATCHES &amp; RESERVES</span>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Commercial acquiring banks do not settle gross individual charges; they deposit aggregated lump-sum batches net of interchange fees, dispute fees, and rolling risk holdbacks (e.g. 5% 180-day reserves).
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl p-5 border border-slate-200 space-y-2">
+          <span class="text-xs font-mono text-blue-600 font-bold block">3. PARTIAL CAPTURES &amp; SPLITS</span>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            In e-commerce workflows where orders ship from different warehouses, a single authorization generates multiple partial captures and subsequent partial refunds, breaking naive one-to-one joins without an event graph.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Minimalist Footer -->
+  <footer class="border-t border-slate-200 bg-white py-8 text-xs font-mono text-slate-500">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div>Mahesh Paul &bull; Onelab AI Native Engineer Interns Assessment</div>
+      <div class="text-slate-400">Zero Floating Point Math &bull; Integer Cent Representation</div>
+    </div>
+  </footer>
+
+  <script>
+    function switchTab(tabId) {
+      const tabs = ['timing', 'duplicate', 'rounding', 'orphan', 'matched'];
+      tabs.forEach(t => {
+        const btn = document.getElementById('tab-' + t);
+        const content = document.getElementById('content-' + t);
+        if (t === tabId) {
+          btn.className = 'px-4 py-2 rounded-lg transition font-semibold bg-white text-blue-600 shadow-sm border border-slate-200';
+          content.classList.remove('hidden');
+        } else {
+          btn.className = 'px-4 py-2 rounded-lg transition font-medium text-slate-600 hover:text-slate-900 hover:bg-white';
+          content.classList.add('hidden');
+        }
+      });
+    }
+
+    // Populate Rounding Table
+    const roundingTable = document.getElementById('table-rounding');
+    for (let i = 1; i <= 14; i++) {
+      const pad = String(i).padStart(3, '0');
+      const tr = document.createElement('tr');
+      tr.className = 'hover:bg-slate-50 transition';
+      tr.innerHTML = `
+        <td class="p-3 font-semibold text-blue-600">TX_202610_RND_${pad}</td>
+        <td class="p-3 text-slate-500">SETTLE_202610_RND_${pad}</td>
+        <td class="p-3 text-right font-mono">$${(15.0 + i*0.373).toFixed(2)}</td>
+        <td class="p-3 text-right font-mono text-purple-700">$${(15.0 + i*0.373 - 0.01).toFixed(2)}</td>
+        <td class="p-3 text-right font-mono font-bold text-rose-600">-$0.01</td>
+        <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] bg-purple-50 text-purple-700 border border-purple-200 font-semibold">BATCH_ROUND_DRIFT</span></td>
+      `;
+      roundingTable.appendChild(tr);
+    }
+
+    // Populate Matched Sample
+    const matchedTable = document.getElementById('table-matched');
+    const sampleTxs = [
+      { id: "TX_202610_0001", cat: "2026-10-02 11:20:00", sid: "SETTLE_202610_0001", sat: "2026-10-03 14:10:00", amt: "412.50" },
+      { id: "TX_202610_0002", cat: "2026-10-03 09:14:22", sid: "SETTLE_202610_0002", sat: "2026-10-04 10:20:11", amt: "89.99" },
+      { id: "TX_202610_0003", cat: "2026-10-04 16:32:01", sid: "SETTLE_202610_0003", sat: "2026-10-05 18:45:00", amt: "1250.00" },
+      { id: "TX_202610_0004", cat: "2026-10-05 12:05:40", sid: "SETTLE_202610_0004", sat: "2026-10-07 09:00:15", amt: "34.20" },
+      { id: "TX_202610_0005", cat: "2026-10-06 18:11:10", sid: "SETTLE_202610_0005", sat: "2026-10-08 11:30:00", amt: "720.80" },
+      { id: "TX_202610_0006", cat: "2026-10-08 14:44:00", sid: "SETTLE_202610_0006", sat: "2026-10-09 16:15:20", amt: "560.10" },
+      { id: "TX_202610_0007", cat: "2026-10-10 10:30:00", sid: "SETTLE_202610_0007", sat: "2026-10-12 11:00:00", amt: "145.00" },
+      { id: "TX_202610_0008", cat: "2026-10-12 17:05:00", sid: "SETTLE_202610_0008", sat: "2026-10-13 19:22:00", amt: "990.40" }
+    ];
+    sampleTxs.forEach(tx => {
+      const tr = document.createElement('tr');
+      tr.className = 'hover:bg-slate-50 transition';
+      tr.innerHTML = `
+        <td class="p-3 font-semibold text-blue-600">${tx.id}</td>
+        <td class="p-3 text-slate-500">${tx.cat}</td>
+        <td class="p-3 text-slate-700">${tx.sid}</td>
+        <td class="p-3 text-slate-500">${tx.sat}</td>
+        <td class="p-3 text-right font-mono font-bold text-slate-900">$${tx.amt}</td>
+        <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">1:1 MATCHED</span></td>
+      `;
+      matchedTable.appendChild(tr);
+    });
+
+    function exportReconReport() {
+      const csvContent = "data:text/csv;charset=utf-8," +
+        "Category,Item_ID,Date_Platform,Date_Bank,Platform_Amount,Bank_Amount,Variance,Status\n" +
+        "TIMING_GAP,TX_202610_TIMING_9941,2026-10-31 22:45:12,2026-11-02 09:15:00,450.00,450.00,0.00,SETTLED_FOLLOWING_MONTH\n" +
+        "DUPLICATE_ENTRY,TX_202610_DUP_GHOST_5022,2026-10-20 14:22:11,N/A,320.00,0.00,-320.00,WEBHOOK_IDEMPOTENCY_COLLISION\n" +
+        "ROUNDING_DRIFT,TX_202610_RND_BATCH,2026-10-15 10:00:00,2026-10-16 10:00:00,N/A,N/A,-0.14,CUMULATIVE_SUB_CENT_DRIFT\n" +
+        "ORPHAN_REFUND,REF_202610_ORPHAN_7701,2026-10-25 16:40:00,2026-10-26 16:40:00,-180.00,-180.00,0.00,UNLINKED_PARENT_TRANSACTION\n";
+
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "reconciliation_audit_october_2026.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+</body>
+</html>

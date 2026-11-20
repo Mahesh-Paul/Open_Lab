@@ -1,0 +1,915 @@
+{
+  "metrics": {
+    "platform_raw_total": "187057.89",
+    "platform_raw_total_cents": 18705789,
+    "bank_october_total": "186287.75",
+    "bank_october_total_cents": 18628775,
+    "raw_discrepancy": "770.14",
+    "raw_discrepancy_cents": 77014,
+    "timing_gap_total": "450.00",
+    "timing_gap_cents": 45000,
+    "duplicate_entry_total": "320.00",
+    "duplicate_entry_cents": 32000,
+    "cumulative_rounding_variance": "-0.14",
+    "cumulative_rounding_variance_cents": -14,
+    "orphan_refund_total": "-180.00",
+    "orphan_refund_cents": -18000,
+    "adjusted_platform_total": "186287.89",
+    "net_unreconciled_variance": "0.00",
+    "net_unreconciled_variance_cents": 0,
+    "is_fully_reconciled": true,
+    "total_platform_records": 304,
+    "total_bank_records": 302,
+    "matched_count": 288,
+    "timing_gap_count": 1,
+    "rounding_gap_count": 14,
+    "duplicate_count": 1,
+    "orphan_refund_count": 1
+  },
+  "timing_gaps": [
+    {
+      "platform_tx_id": "TX_202610_TIMING_9941",
+      "bank_settlement_id": "SETTLE_202611_TIMING_0012",
+      "amount_cents": 45000,
+      "amount": "450.00",
+      "created_at": "2026-10-31 22:45:12",
+      "settled_at": "2026-11-02 09:15:00",
+      "delay_hours": 34.5,
+      "reason": "Timing gap: Processed in Oct, settled in Nov (T+2 in-transit float)"
+    }
+  ],
+  "duplicate_entries": [
+    {
+      "duplicate_transaction_id": "TX_202610_DUP_GHOST_5022",
+      "original_transaction_id": "TX_202610_DUP_ORIG_5021",
+      "idempotency_key": "idemp_order_xyz_5021",
+      "amount_cents": 32000,
+      "amount": "320.00",
+      "created_at": "2026-10-20 14:22:11",
+      "reason": "Duplicate platform webhook ingestion / idempotency key collision"
+    }
+  ],
+  "rounding_gaps": [
+    {
+      "platform_tx_id": "TX_202610_RND_001",
+      "bank_settlement_id": "SETTLE_202610_RND_001",
+      "platform_cents": 1537,
+      "bank_cents": 1536,
+      "variance_cents": -1,
+      "platform_amount": "15.37",
+      "bank_amount": "15.36",
+      "variance_amount": "-0.01",
+      "status": "ROUNDING_VARIANCE"
+    },
+    {
+      "platform_tx_id": "TX_202610_RND_002",
+      "bank_settlement_id": "SETTLE_202610_RND_002",
+      "platform_cents": 1575,
+      "bank_cents": 1574,
+      "variance_cents": -1,
+      "platform_amount": "15.75",
+      "bank_amount": "15.74",
+      "variance_amount": "-0.01",
+      "status": "ROUNDING_VARIANCE"
+    },
+    {
+      "platform_tx_id": "TX_202610_RND_003",
+      "bank_settlement_id": "SETTLE_202610_RND_003",
+      "platform_cents": 1612,
+      "bank_cents": 1611,
+      "variance_cents": -1,
+      "platform_amount": "16.12",
+      "bank_amount": "16.11",
+      "variance_amount": "-0.01",
+      "status": "ROUNDING_VARIANCE"
+    },
+    {
+      "platform_tx_id": "TX_202610_RND_004",
+      "bank_settlement_id": "SETTLE_202610_RND_004",
+      "platform_cents": 1649,
+      "bank_cents": 1648,
+      "variance_cents": -1,
+      "platform_amount": "16.49",
+      "bank_amount": "16.48",
+      "variance_amount": "-0.01",
+      "status": "ROUNDING_VARIANCE"
+    },
+    {
+      "platform_tx_id": "TX_202610_RND_005",
+      "bank_settlement_id": "SETTLE_202610_RND_005",
+      "platform_cents": 1686,
+      "bank_cents": 1685,
+      "variance_cents": -1,
+      "platform_amount": "16.86",
+      "bank_amount": "16.85",
+      "variance_amount": "-0.01",
+      "status": "ROUNDING_VARIANCE"
+    },
+    {
+      "platform_tx_id": "TX_202610_RND_006",
+      "bank_settlement_id": "SETTLE_202610_RND_006",
+      "platform_cents": 1724,
+      "bank_cents": 1723,
+      "variance_cents": -1,
+      "platform_amount": "17.24",
+      "bank_amount": "17.23",
+      "variance_amount": "-0.01",
+      "status": "ROUNDING_VARIANCE"
+    },
+    {
+      "platform_tx_id": "TX_202610_RND_007",
+      "bank_settlement_id": "SETTLE_202610_RND_007",
+      "platform_cents": 1761,
+      "bank_cents": 1760,
+      "variance_cents": -1,
+      "platform_amount": "17.61",
+      "bank_amount": "17.60",
+      "variance_amount": "-0.01",
+      "status": "ROUNDING_VARIANCE"
+    },
+    {
+      "platform_tx_id": "TX_202610_RND_008",
+      "bank_settlement_id": "SETTLE_202610_RND_008",
+      "platform_cents": 1798,
+      "bank_cents": 1797,
+      "variance_cents": -1,
+      "platform_amount": "17.98",
+      "bank_amount": "17.97",
+      "variance_amount": "-0.01",
+      "status": "ROUNDING_VARIANCE"
+    },
+    {
+      "platform_tx_id": "TX_202610_RND_009",
+      "bank_settlement_id": "SETTLE_202610_RND_009",
+      "platform_cents": 1836,
+      "bank_cents": 1835,
+      "variance_cents": -1,
+      "platform_amount": "18.36",
+      "bank_amount": "18.35",
+      "variance_amount": "-0.01",
+      "status": "ROUNDING_VARIANCE"
+    },
+    {
+      "platform_tx_id": "TX_202610_RND_010",
+      "bank_settlement_id": "SETTLE_202610_RND_010",
+      "platform_cents": 1873,
+      "bank_cents": 1872,
+      "variance_cents": -1,
+      "platform_amount": "18.73",
+      "bank_amount": "18.72",
+      "variance_amount": "-0.01",
+      "status": "ROUNDING_VARIANCE"
+    },
+    {
+      "platform_tx_id": "TX_202610_RND_011",
+      "bank_settlement_id": "SETTLE_202610_RND_011",
+      "platform_cents": 1910,
+      "bank_cents": 1909,
+      "variance_cents": -1,
+      "platform_amount": "19.10",
+      "bank_amount": "19.09",
+      "variance_amount": "-0.01",
+      "status": "ROUNDING_VARIANCE"
+    },
+    {
+      "platform_tx_id": "TX_202610_RND_012",
+      "bank_settlement_id": "SETTLE_202610_RND_012",
+      "platform_cents": 1948,
+      "bank_cents": 1947,
+      "variance_cents": -1,
+      "platform_amount": "19.48",
+      "bank_amount": "19.47",
+      "variance_amount": "-0.01",
+      "status": "ROUNDING_VARIANCE"
+    },
+    {
+      "platform_tx_id": "TX_202610_RND_013",
+      "bank_settlement_id": "SETTLE_202610_RND_013",
+      "platform_cents": 1985,
+      "bank_cents": 1984,
+      "variance_cents": -1,
+      "platform_amount": "19.85",
+      "bank_amount": "19.84",
+      "variance_amount": "-0.01",
+      "status": "ROUNDING_VARIANCE"
+    },
+    {
+      "platform_tx_id": "TX_202610_RND_014",
+      "bank_settlement_id": "SETTLE_202610_RND_014",
+      "platform_cents": 2022,
+      "bank_cents": 2021,
+      "variance_cents": -1,
+      "platform_amount": "20.22",
+      "bank_amount": "20.21",
+      "variance_amount": "-0.01",
+      "status": "ROUNDING_VARIANCE"
+    }
+  ],
+  "orphan_refunds": [
+    {
+      "refund_id": "REF_202610_ORPHAN_7701",
+      "created_at": "2026-10-25 16:40:00",
+      "amount_cents": -18000,
+      "amount": "-180.00",
+      "customer_id": "CUST_UNKNOWN_7701",
+      "status": "ORPHAN_REFUND",
+      "reason": "Refund processed without matching original transaction record in ledger"
+    }
+  ],
+  "matched_sample": [
+    {
+      "platform_tx_id": "TX_202610_0204",
+      "bank_settlement_id": "SETTLE_202610_0204",
+      "amount_cents": 28503,
+      "amount": "285.03",
+      "created_at": "2026-10-01 17:43:37",
+      "settled_at": "2026-10-03 19:03:55",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0233",
+      "bank_settlement_id": "SETTLE_202610_0233",
+      "amount_cents": 86727,
+      "amount": "867.27",
+      "created_at": "2026-10-02 04:44:36",
+      "settled_at": "2026-10-04 08:50:02",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0064",
+      "bank_settlement_id": "SETTLE_202610_0064",
+      "amount_cents": 16435,
+      "amount": "164.35",
+      "created_at": "2026-10-02 05:45:19",
+      "settled_at": "2026-10-03 07:38:05",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0002",
+      "bank_settlement_id": "SETTLE_202610_0002",
+      "amount_cents": 90502,
+      "amount": "905.02",
+      "created_at": "2026-10-02 07:44:30",
+      "settled_at": "2026-10-04 09:50:38",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0246",
+      "bank_settlement_id": "SETTLE_202610_0246",
+      "amount_cents": 71325,
+      "amount": "713.25",
+      "created_at": "2026-10-02 17:55:23",
+      "settled_at": "2026-10-03 21:57:16",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0046",
+      "bank_settlement_id": "SETTLE_202610_0046",
+      "amount_cents": 145843,
+      "amount": "1458.43",
+      "created_at": "2026-10-02 21:24:48",
+      "settled_at": "2026-10-04 23:27:50",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0192",
+      "bank_settlement_id": "SETTLE_202610_0192",
+      "amount_cents": 145453,
+      "amount": "1454.53",
+      "created_at": "2026-10-02 22:26:52",
+      "settled_at": "2026-10-05 00:37:04",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0234",
+      "bank_settlement_id": "SETTLE_202610_0234",
+      "amount_cents": 96465,
+      "amount": "964.65",
+      "created_at": "2026-10-03 01:20:07",
+      "settled_at": "2026-10-05 03:33:35",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0094",
+      "bank_settlement_id": "SETTLE_202610_0094",
+      "amount_cents": 95862,
+      "amount": "958.62",
+      "created_at": "2026-10-03 04:17:20",
+      "settled_at": "2026-10-04 09:39:09",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0243",
+      "bank_settlement_id": "SETTLE_202610_0243",
+      "amount_cents": 43646,
+      "amount": "436.46",
+      "created_at": "2026-10-03 07:39:22",
+      "settled_at": "2026-10-05 12:28:41",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0142",
+      "bank_settlement_id": "SETTLE_202610_0142",
+      "amount_cents": 35603,
+      "amount": "356.03",
+      "created_at": "2026-10-03 08:01:37",
+      "settled_at": "2026-10-04 10:58:13",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0035",
+      "bank_settlement_id": "SETTLE_202610_0035",
+      "amount_cents": 60864,
+      "amount": "608.64",
+      "created_at": "2026-10-03 08:27:24",
+      "settled_at": "2026-10-04 12:33:13",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0179",
+      "bank_settlement_id": "SETTLE_202610_0179",
+      "amount_cents": 41564,
+      "amount": "415.64",
+      "created_at": "2026-10-03 16:21:24",
+      "settled_at": "2026-10-05 19:53:36",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0209",
+      "bank_settlement_id": "SETTLE_202610_0209",
+      "amount_cents": 44370,
+      "amount": "443.70",
+      "created_at": "2026-10-03 20:42:21",
+      "settled_at": "2026-10-05 02:08:05",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0056",
+      "bank_settlement_id": "SETTLE_202610_0056",
+      "amount_cents": 47430,
+      "amount": "474.30",
+      "created_at": "2026-10-03 22:37:28",
+      "settled_at": "2026-10-06 02:09:36",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0099",
+      "bank_settlement_id": "SETTLE_202610_0099",
+      "amount_cents": 114529,
+      "amount": "1145.29",
+      "created_at": "2026-10-03 22:39:17",
+      "settled_at": "2026-10-06 02:57:25",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0052",
+      "bank_settlement_id": "SETTLE_202610_0052",
+      "amount_cents": 76656,
+      "amount": "766.56",
+      "created_at": "2026-10-04 00:46:57",
+      "settled_at": "2026-10-06 06:28:43",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0159",
+      "bank_settlement_id": "SETTLE_202610_0159",
+      "amount_cents": 121860,
+      "amount": "1218.60",
+      "created_at": "2026-10-04 01:35:53",
+      "settled_at": "2026-10-06 05:56:53",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0175",
+      "bank_settlement_id": "SETTLE_202610_0175",
+      "amount_cents": 29489,
+      "amount": "294.89",
+      "created_at": "2026-10-04 02:24:46",
+      "settled_at": "2026-10-06 07:02:59",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0138",
+      "bank_settlement_id": "SETTLE_202610_0138",
+      "amount_cents": 101610,
+      "amount": "1016.10",
+      "created_at": "2026-10-04 04:10:06",
+      "settled_at": "2026-10-06 05:37:12",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0028",
+      "bank_settlement_id": "SETTLE_202610_0028",
+      "amount_cents": 21457,
+      "amount": "214.57",
+      "created_at": "2026-10-04 14:21:45",
+      "settled_at": "2026-10-06 17:40:33",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0249",
+      "bank_settlement_id": "SETTLE_202610_0249",
+      "amount_cents": 134866,
+      "amount": "1348.66",
+      "created_at": "2026-10-04 19:32:14",
+      "settled_at": "2026-10-06 21:51:53",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0225",
+      "bank_settlement_id": "SETTLE_202610_0225",
+      "amount_cents": 118661,
+      "amount": "1186.61",
+      "created_at": "2026-10-04 22:18:52",
+      "settled_at": "2026-10-07 02:05:05",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0017",
+      "bank_settlement_id": "SETTLE_202610_0017",
+      "amount_cents": 76396,
+      "amount": "763.96",
+      "created_at": "2026-10-04 22:43:03",
+      "settled_at": "2026-10-06 01:35:13",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0196",
+      "bank_settlement_id": "SETTLE_202610_0196",
+      "amount_cents": 43117,
+      "amount": "431.17",
+      "created_at": "2026-10-05 01:13:58",
+      "settled_at": "2026-10-07 04:28:45",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0041",
+      "bank_settlement_id": "SETTLE_202610_0041",
+      "amount_cents": 83207,
+      "amount": "832.07",
+      "created_at": "2026-10-05 05:00:13",
+      "settled_at": "2026-10-07 09:01:40",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0150",
+      "bank_settlement_id": "SETTLE_202610_0150",
+      "amount_cents": 54057,
+      "amount": "540.57",
+      "created_at": "2026-10-05 05:55:42",
+      "settled_at": "2026-10-07 07:00:26",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0112",
+      "bank_settlement_id": "SETTLE_202610_0112",
+      "amount_cents": 72964,
+      "amount": "729.64",
+      "created_at": "2026-10-05 07:31:54",
+      "settled_at": "2026-10-06 12:04:50",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0237",
+      "bank_settlement_id": "SETTLE_202610_0237",
+      "amount_cents": 48208,
+      "amount": "482.08",
+      "created_at": "2026-10-05 08:56:58",
+      "settled_at": "2026-10-06 11:17:12",
+      "status": "EXACT_MATCH"
+    },
+    {
+      "platform_tx_id": "TX_202610_0053",
+      "bank_settlement_id": "SETTLE_202610_0053",
+      "amount_cents": 144399,
+      "amount": "1443.99",
+      "created_at": "2026-10-05 12:00:16",
+      "settled_at": "2026-10-06 13:32:47",
+      "status": "EXACT_MATCH"
+    }
+  ],
+  "platform_sample": [
+    {
+      "transaction_id": "TX_202610_0204",
+      "created_at": "2026-10-01 17:43:37",
+      "type": "PAYMENT",
+      "customer_id": "CUST_2402",
+      "amount": "285.03",
+      "currency": "USD",
+      "status": "CAPTURED",
+      "idempotency_key": "idemp_TX_202610_0204",
+      "cents": 28503
+    },
+    {
+      "transaction_id": "TX_202610_0233",
+      "created_at": "2026-10-02 04:44:36",
+      "type": "PAYMENT",
+      "customer_id": "CUST_4453",
+      "amount": "867.27",
+      "currency": "USD",
+      "status": "CAPTURED",
+      "idempotency_key": "idemp_TX_202610_0233",
+      "cents": 86727
+    },
+    {
+      "transaction_id": "TX_202610_0064",
+      "created_at": "2026-10-02 05:45:19",
+      "type": "PAYMENT",
+      "customer_id": "CUST_7965",
+      "amount": "164.35",
+      "currency": "USD",
+      "status": "CAPTURED",
+      "idempotency_key": "idemp_TX_202610_0064",
+      "cents": 16435
+    },
+    {
+      "transaction_id": "TX_202610_0002",
+      "created_at": "2026-10-02 07:44:30",
+      "type": "PAYMENT",
+      "customer_id": "CUST_4257",
+      "amount": "905.02",
+      "currency": "USD",
+      "status": "CAPTURED",
+      "idempotency_key": "idemp_TX_202610_0002",
+      "cents": 90502
+    },
+    {
+      "transaction_id": "TX_202610_0246",
+      "created_at": "2026-10-02 17:55:23",
+      "type": "PAYMENT",
+      "customer_id": "CUST_8487",
+      "amount": "713.25",
+      "currency": "USD",
+      "status": "CAPTURED",
+      "idempotency_key": "idemp_TX_202610_0246",
+      "cents": 71325
+    },
+    {
+      "transaction_id": "TX_202610_0046",
+      "created_at": "2026-10-02 21:24:48",
+      "type": "PAYMENT",
+      "customer_id": "CUST_1653",
+      "amount": "1458.43",
+      "currency": "USD",
+      "status": "CAPTURED",
+      "idempotency_key": "idemp_TX_202610_0046",
+      "cents": 145843
+    },
+    {
+      "transaction_id": "TX_202610_0192",
+      "created_at": "2026-10-02 22:26:52",
+      "type": "PAYMENT",
+      "customer_id": "CUST_5668",
+      "amount": "1454.53",
+      "currency": "USD",
+      "status": "CAPTURED",
+      "idempotency_key": "idemp_TX_202610_0192",
+      "cents": 145453
+    },
+    {
+      "transaction_id": "TX_202610_0234",
+      "created_at": "2026-10-03 01:20:07",
+      "type": "PAYMENT",
+      "customer_id": "CUST_5949",
+      "amount": "964.65",
+      "currency": "USD",
+      "status": "CAPTURED",
+      "idempotency_key": "idemp_TX_202610_0234",
+      "cents": 96465
+    },
+    {
+      "transaction_id": "TX_202610_0094",
+      "created_at": "2026-10-03 04:17:20",
+      "type": "PAYMENT",
+      "customer_id": "CUST_9042",
+      "amount": "958.62",
+      "currency": "USD",
+      "status": "CAPTURED",
+      "idempotency_key": "idemp_TX_202610_0094",
+      "cents": 95862
+    },
+    {
+      "transaction_id": "TX_202610_0243",
+      "created_at": "2026-10-03 07:39:22",
+      "type": "PAYMENT",
+      "customer_id": "CUST_7329",
+      "amount": "436.46",
+      "currency": "USD",
+      "status": "CAPTURED",
+      "idempotency_key": "idemp_TX_202610_0243",
+      "cents": 43646
+    },
+    {
+      "transaction_id": "TX_202610_0142",
+      "created_at": "2026-10-03 08:01:37",
+      "type": "PAYMENT",
+      "customer_id": "CUST_9807",
+      "amount": "356.03",
+      "currency": "USD",
+      "status": "CAPTURED",
+      "idempotency_key": "idemp_TX_202610_0142",
+      "cents": 35603
+    },
+    {
+      "transaction_id": "TX_202610_0035",
+      "created_at": "2026-10-03 08:27:24",
+      "type": "PAYMENT",
+      "customer_id": "CUST_5033",
+      "amount": "608.64",
+      "currency": "USD",
+      "status": "CAPTURED",
+      "idempotency_key": "idemp_TX_202610_0035",
+      "cents": 60864
+    },
+    {
+      "transaction_id": "TX_202610_0179",
+      "created_at": "2026-10-03 16:21:24",
+      "type": "PAYMENT",
+      "customer_id": "CUST_1920",
+      "amount": "415.64",
+      "currency": "USD",
+      "status": "CAPTURED",
+      "idempotency_key": "idemp_TX_202610_0179",
+      "cents": 41564
+    },
+    {
+      "transaction_id": "TX_202610_0209",
+      "created_at": "2026-10-03 20:42:21",
+      "type": "PAYMENT",
+      "customer_id": "CUST_1717",
+      "amount": "443.70",
+      "currency": "USD",
+      "status": "CAPTURED",
+      "idempotency_key": "idemp_TX_202610_0209",
+      "cents": 44370
+    },
+    {
+      "transaction_id": "TX_202610_0056",
+      "created_at": "2026-10-03 22:37:28",
+      "type": "PAYMENT",
+      "customer_id": "CUST_3041",
+      "amount": "474.30",
+      "currency": "USD",
+      "status": "CAPTURED",
+      "idempotency_key": "idemp_TX_202610_0056",
+      "cents": 47430
+    },
+    {
+      "transaction_id": "TX_202610_0099",
+      "created_at": "2026-10-03 22:39:17",
+      "type": "PAYMENT",
+      "customer_id": "CUST_4457",
+      "amount": "1145.29",
+      "currency": "USD",
+      "status": "CAPTURED",
+      "idempotency_key": "idemp_TX_202610_0099",
+      "cents": 114529
+    },
+    {
+      "transaction_id": "TX_202610_0052",
+      "created_at": "2026-10-04 00:46:57",
+      "type": "PAYMENT",
+      "customer_id": "CUST_9785",
+      "amount": "766.56",
+      "currency": "USD",
+      "status": "CAPTURED",
+      "idempotency_key": "idemp_TX_202610_0052",
+      "cents": 76656
+    },
+    {
+      "transaction_id": "TX_202610_0159",
+      "created_at": "2026-10-04 01:35:53",
+      "type": "PAYMENT",
+      "customer_id": "CUST_1982",
+      "amount": "1218.60",
+      "currency": "USD",
+      "status": "CAPTURED",
+      "idempotency_key": "idemp_TX_202610_0159",
+      "cents": 121860
+    },
+    {
+      "transaction_id": "TX_202610_0175",
+      "created_at": "2026-10-04 02:24:46",
+      "type": "PAYMENT",
+      "customer_id": "CUST_6724",
+      "amount": "294.89",
+      "currency": "USD",
+      "status": "CAPTURED",
+      "idempotency_key": "idemp_TX_202610_0175",
+      "cents": 29489
+    },
+    {
+      "transaction_id": "TX_202610_0138",
+      "created_at": "2026-10-04 04:10:06",
+      "type": "PAYMENT",
+      "customer_id": "CUST_7511",
+      "amount": "1016.10",
+      "currency": "USD",
+      "status": "CAPTURED",
+      "idempotency_key": "idemp_TX_202610_0138",
+      "cents": 101610
+    }
+  ],
+  "bank_sample": [
+    {
+      "settlement_id": "SETTLE_202610_0064",
+      "settled_at": "2026-10-03 07:38:05",
+      "type": "CREDIT",
+      "reference_id": "TX_202610_0064",
+      "amount": "164.35",
+      "currency": "USD",
+      "bank_batch_id": "BATCH_20261003_01",
+      "cents": 16435
+    },
+    {
+      "settlement_id": "SETTLE_202610_0204",
+      "settled_at": "2026-10-03 19:03:55",
+      "type": "CREDIT",
+      "reference_id": "TX_202610_0204",
+      "amount": "285.03",
+      "currency": "USD",
+      "bank_batch_id": "BATCH_20261003_01",
+      "cents": 28503
+    },
+    {
+      "settlement_id": "SETTLE_202610_0246",
+      "settled_at": "2026-10-03 21:57:16",
+      "type": "CREDIT",
+      "reference_id": "TX_202610_0246",
+      "amount": "713.25",
+      "currency": "USD",
+      "bank_batch_id": "BATCH_20261003_01",
+      "cents": 71325
+    },
+    {
+      "settlement_id": "SETTLE_202610_0233",
+      "settled_at": "2026-10-04 08:50:02",
+      "type": "CREDIT",
+      "reference_id": "TX_202610_0233",
+      "amount": "867.27",
+      "currency": "USD",
+      "bank_batch_id": "BATCH_20261004_01",
+      "cents": 86727
+    },
+    {
+      "settlement_id": "SETTLE_202610_0094",
+      "settled_at": "2026-10-04 09:39:09",
+      "type": "CREDIT",
+      "reference_id": "TX_202610_0094",
+      "amount": "958.62",
+      "currency": "USD",
+      "bank_batch_id": "BATCH_20261004_01",
+      "cents": 95862
+    },
+    {
+      "settlement_id": "SETTLE_202610_0002",
+      "settled_at": "2026-10-04 09:50:38",
+      "type": "CREDIT",
+      "reference_id": "TX_202610_0002",
+      "amount": "905.02",
+      "currency": "USD",
+      "bank_batch_id": "BATCH_20261004_01",
+      "cents": 90502
+    },
+    {
+      "settlement_id": "SETTLE_202610_0142",
+      "settled_at": "2026-10-04 10:58:13",
+      "type": "CREDIT",
+      "reference_id": "TX_202610_0142",
+      "amount": "356.03",
+      "currency": "USD",
+      "bank_batch_id": "BATCH_20261004_01",
+      "cents": 35603
+    },
+    {
+      "settlement_id": "SETTLE_202610_0035",
+      "settled_at": "2026-10-04 12:33:13",
+      "type": "CREDIT",
+      "reference_id": "TX_202610_0035",
+      "amount": "608.64",
+      "currency": "USD",
+      "bank_batch_id": "BATCH_20261004_01",
+      "cents": 60864
+    },
+    {
+      "settlement_id": "SETTLE_202610_0046",
+      "settled_at": "2026-10-04 23:27:50",
+      "type": "CREDIT",
+      "reference_id": "TX_202610_0046",
+      "amount": "1458.43",
+      "currency": "USD",
+      "bank_batch_id": "BATCH_20261004_01",
+      "cents": 145843
+    },
+    {
+      "settlement_id": "SETTLE_202610_0192",
+      "settled_at": "2026-10-05 00:37:04",
+      "type": "CREDIT",
+      "reference_id": "TX_202610_0192",
+      "amount": "1454.53",
+      "currency": "USD",
+      "bank_batch_id": "BATCH_20261005_01",
+      "cents": 145453
+    },
+    {
+      "settlement_id": "SETTLE_202610_0209",
+      "settled_at": "2026-10-05 02:08:05",
+      "type": "CREDIT",
+      "reference_id": "TX_202610_0209",
+      "amount": "443.70",
+      "currency": "USD",
+      "bank_batch_id": "BATCH_20261005_01",
+      "cents": 44370
+    },
+    {
+      "settlement_id": "SETTLE_202610_0234",
+      "settled_at": "2026-10-05 03:33:35",
+      "type": "CREDIT",
+      "reference_id": "TX_202610_0234",
+      "amount": "964.65",
+      "currency": "USD",
+      "bank_batch_id": "BATCH_20261005_01",
+      "cents": 96465
+    },
+    {
+      "settlement_id": "SETTLE_202610_0243",
+      "settled_at": "2026-10-05 12:28:41",
+      "type": "CREDIT",
+      "reference_id": "TX_202610_0243",
+      "amount": "436.46",
+      "currency": "USD",
+      "bank_batch_id": "BATCH_20261005_01",
+      "cents": 43646
+    },
+    {
+      "settlement_id": "SETTLE_202610_0179",
+      "settled_at": "2026-10-05 19:53:36",
+      "type": "CREDIT",
+      "reference_id": "TX_202610_0179",
+      "amount": "415.64",
+      "currency": "USD",
+      "bank_batch_id": "BATCH_20261005_01",
+      "cents": 41564
+    },
+    {
+      "settlement_id": "SETTLE_202610_0017",
+      "settled_at": "2026-10-06 01:35:13",
+      "type": "CREDIT",
+      "reference_id": "TX_202610_0017",
+      "amount": "763.96",
+      "currency": "USD",
+      "bank_batch_id": "BATCH_20261006_01",
+      "cents": 76396
+    },
+    {
+      "settlement_id": "SETTLE_202610_0056",
+      "settled_at": "2026-10-06 02:09:36",
+      "type": "CREDIT",
+      "reference_id": "TX_202610_0056",
+      "amount": "474.30",
+      "currency": "USD",
+      "bank_batch_id": "BATCH_20261006_01",
+      "cents": 47430
+    },
+    {
+      "settlement_id": "SETTLE_202610_0099",
+      "settled_at": "2026-10-06 02:57:25",
+      "type": "CREDIT",
+      "reference_id": "TX_202610_0099",
+      "amount": "1145.29",
+      "currency": "USD",
+      "bank_batch_id": "BATCH_20261006_01",
+      "cents": 114529
+    },
+    {
+      "settlement_id": "SETTLE_202610_0138",
+      "settled_at": "2026-10-06 05:37:12",
+      "type": "CREDIT",
+      "reference_id": "TX_202610_0138",
+      "amount": "1016.10",
+      "currency": "USD",
+      "bank_batch_id": "BATCH_20261006_01",
+      "cents": 101610
+    },
+    {
+      "settlement_id": "SETTLE_202610_0159",
+      "settled_at": "2026-10-06 05:56:53",
+      "type": "CREDIT",
+      "reference_id": "TX_202610_0159",
+      "amount": "1218.60",
+      "currency": "USD",
+      "bank_batch_id": "BATCH_20261006_01",
+      "cents": 121860
+    },
+    {
+      "settlement_id": "SETTLE_202610_0052",
+      "settled_at": "2026-10-06 06:28:43",
+      "type": "CREDIT",
+      "reference_id": "TX_202610_0052",
+      "amount": "766.56",
+      "currency": "USD",
+      "bank_batch_id": "BATCH_20261006_01",
+      "cents": 76656
+    }
+  ]
+}
